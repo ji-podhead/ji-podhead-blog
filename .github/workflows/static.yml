@@ -35,8 +35,6 @@ jobs:
         uses: actions/configure-pages@v5
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
-      - name: Gruntwork Terragrunt
-        uses: gruntwork-io/terragrunt-action@v2.1.4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

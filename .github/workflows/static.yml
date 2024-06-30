@@ -35,6 +35,10 @@ jobs:
         uses: actions/configure-pages@v5
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
+      - name: Initialize Terraform
+        run: terraform init
+      - name: Terraform Plan
+        run: terraform plan
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -47,10 +51,6 @@ jobs:
         run: cp  -r ./build/* ./
       - name: rm build
         run: rm -R build
-      - name: Initialize Terraform
-        run: terraform init
-      - name: Terraform Plan
-        run: terraform plan
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

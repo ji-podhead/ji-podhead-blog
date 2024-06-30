@@ -1,3 +1,9 @@
+variable "github_token" {
+  type        = string
+  description = "The GitHub Personal Access Token"
+  sensitive   = true
+}
+
 provider "github" {
   token = var.github_token
 }

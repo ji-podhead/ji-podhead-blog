@@ -20,7 +20,8 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
+env:
+  GH_PAT: ${{ secrets.terraform }}
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -38,7 +39,7 @@ jobs:
       - name: Initialize Terraform
         run: terraform init
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var="github_token=${{ secrets.terraform }}"
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:

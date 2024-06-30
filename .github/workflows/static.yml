@@ -35,6 +35,18 @@ jobs:
         uses: actions/configure-pages@v5
       - name: HashiCorp - Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.1
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Terraform Init and Apply
+        run: |
+          terraform init
+          terraform apply -auto-approve
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

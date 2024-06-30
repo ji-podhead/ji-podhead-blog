@@ -46,6 +46,10 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init
+      - id: plan
+      run: terraform plan -no-color
       - name: Copy build output to root
         run: cp  -r ./build/* ./
       - name: rm build

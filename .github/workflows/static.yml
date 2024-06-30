@@ -34,12 +34,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: HashiCorp - Setup Terraform
-        uses: hashicorp/setup-terraform@v3.1.1
-      - name: Initialize Terraform
-        run: terraform init
-      - name: Terraform Plan
-        run: terraform plan -var="github_token=${{ secrets.terraform }}"
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_hostname: 'terraform.example.com'
+          cli_config_credentials_token: ${{ secrets.terraform }}
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:

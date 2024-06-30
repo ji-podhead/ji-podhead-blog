@@ -44,7 +44,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Copy build output to root
-        run: cp -r build/*./
+        run: cp  -r ./build/* ./
       - name: rm build
         run: rm -R build
       - name: Initialize Terraform

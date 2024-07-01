@@ -3,9 +3,7 @@ variable "github_token" {
   description = "The GitHub Personal Access Token"
   sensitive   = true
 }
-output "repository_clone_url" {
-  value = github_repository.my_website.url
-}
+
 
 provider "github" {
   token = var.github_token
@@ -35,7 +33,7 @@ resource "github_repository_contents" "upload_build_directory" {
 #  }
 #}
 resource "github_repository_file" "upload_index_html" {
-  repository = github_repository.my_website.name
+  repository = "https://ji-podhead.github.io/ji-podhead-blog"
   branch     = "main"
   path       = "build/index.html"
   content    = file("${path.module}/build/index.html")

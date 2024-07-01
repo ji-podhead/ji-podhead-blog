@@ -15,12 +15,7 @@ resource "github_repository" "my_website" {
   homepage_url = "https://ji-podhead.github.io/ji-podhead-blog"
 }
 
-resource "github_repository_contents" "upload_build_directory" {
-  repository = github_repository.my_website.name
-  content    = file("${path.module}/build/index.html")
-  filename   = "build/index.html"
-  overwrite  = true
-}
+   
 
 ## Optional: Add this if you want to upload the entire build directory recursively
 #resource "null_resource" "upload_build_directory_recursive" {

@@ -39,6 +39,7 @@ jobs:
         with:
           cli_config_credentials_hostname: 'terraform.example.com'
           cli_config_credentials_token: ${{ secrets.terraform }}
+          token: ${{ secrets.terraform }}
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:

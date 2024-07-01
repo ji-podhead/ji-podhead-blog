@@ -40,29 +40,18 @@ jobs:
           cli_config_credentials_hostname: 'terraform.example.com'
           cli_config_credentials_token: ${{ secrets.TERRAFORM }}
           token: ${{ secrets.TERRAFORM }}
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 12
-      - name: Install Dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
+  
       - name: Terraform Init
         id: init
-        run: terraform init -plugin-dir=.
-
+        run: terraform init
       - name: Terraform Validate
         id: validate
-        run: TF_LOG=DEBUG terraform validate -no-color
-
+        run: terraform validate -no-color
       - name: Terraform Plan
         id: plan
         run: TF_LOG=DEBUG terraform plan -no-color
-        continue-on-error: true     # - name: Copy build output to root
-     #   run: cp  -r ./build/* ./
-     # - name: rm build
-     #   run: rm -R build
+        continue-on-error: true
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -71,4 +60,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
+#- name: Copy build output to root
+ #       run: cp  -r ./build/* ./
+  #    - name: rm build
+   #     run: rm -R build
+    #- name: Setup Node.js
+    #    uses: actions/setup-node@v2
+    #    with:
+    #      node-version: 12
+    #  - name: Install Dependencies
+    #    run: npm ci
+    #  - name: Build
+    #    run: npm run build

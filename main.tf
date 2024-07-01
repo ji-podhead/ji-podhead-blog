@@ -14,8 +14,6 @@ resource "null_resource" "deploy_website" {
 
   provisioner "local-exec" {
     command = <<EOT
-      cd path/to/your/repo
-      git checkout main
       cp  -r ./build/* ./
       rm -R build
     EOT

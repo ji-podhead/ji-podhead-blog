@@ -1,7 +1,7 @@
-variable "github_token" {
+variable "gh_pat" {
   type        = string
   description = "The GitHub Personal Access Token"
-  sensitive   = true
+  sensitive   = false
 }
 provider "github" {
   token = var.gh_pat

@@ -14,9 +14,9 @@ resource "null_resource" "deploy_website" {
 
   provisioner "local-exec" {
     command = <<EOT
-      cp  -r ./build/* ./
-      rm -R build
-    EOT
+  cp  -r ./build/* ./
+  rm -R build && echo "Build directory deleted successfully" || echo "Failed to delete build directory"
+  EOT
   }
 }
 /*

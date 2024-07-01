@@ -30,7 +30,7 @@ resource "github_repository" "my_website" {
 resource "github_repository_file" "upload_index_html" {
   repository = "ji-podhead/ji-podhead-blog" # Korrigiertes Format: Organisation/Repository
   branch     = "main"
-  filename   = "build/index.html"
-  content    = file("${path.module}/index.html")
+  filen   = "index.html"
+  content    = file("${path.module}/build/index.html")
   commit_message = "Upload index.html"
 }

@@ -49,7 +49,11 @@ jobs:
       - name: Terraform Plan
         run: |
           export TF_VAR_github_token=${{ secrets.TERRAFORM }}
-          TF_LOG=DEBUG terraform plan -no-color
+          TF_LOG=DEBUG terraform plan -no-color -out=tfplan.out
+      - name: Apply Terraform Plan
+        run: |
+            terraform apply -input=false tfplan.out
+        
         continue-on-error: true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

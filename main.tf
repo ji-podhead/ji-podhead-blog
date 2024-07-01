@@ -3,20 +3,21 @@ variable "github_token" {
   description = "The GitHub Personal Access Token"
   sensitive   = true
 }
-
-
 provider "github" {
   token = var.github_token
 }
-
 resource "github_repository" "my_website" {
-  name        = "my-static-website"
+  name        = "ji-podhead-blog"
   description = "My static website hosted on GitHub Pages"
   homepage_url = "https://ji-podhead.github.io/ji-podhead-blog"
+} 
+resource "github_repository_file" "upload_index_html" {
+  repository = "ji-podhead/ji-podhead-blog" # Korrigiertes Format: Organisation/Repository
+  branch     = "main"
+  file   = "index.html"
+  content    = file("${path.module}/build/index.html")
+  commit_message = "Upload index.html"
 }
-
-   
-
 ## Optional: Add this if you want to upload the entire build directory recursively
 #resource "null_resource" "upload_build_directory_recursive" {
 
@@ -27,10 +28,3 @@ resource "github_repository" "my_website" {
 
 #  }
 #}
-resource "github_repository_file" "upload_index_html" {
-  repository = "ji-podhead/ji-podhead-blog" # Korrigiertes Format: Organisation/Repository
-  branch     = "main"
-  file   = "index.html"
-  content    = file("${path.module}/build/index.html")
-  commit_message = "Upload index.html"
-}

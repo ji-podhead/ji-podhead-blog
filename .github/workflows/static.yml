@@ -39,7 +39,7 @@ jobs:
         with:
           cli_config_credentials_hostname: 'terraform.example.com'
           cli_config_credentials_token: ${{ secrets.TERRAFORM }}
-          token: ${{ secrets.TERRAFORM }}
+
   
       - name: Terraform Init
         id: init
@@ -47,11 +47,10 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-      - name: Terraform Plan
-        id: plan
-        run: TF_LOG=DEBUG terraform plan -no-color
-        continue-on-error: true
-      
+        run: |
+            export TF_VAR_github_token=${{ secrets.TERRAFORM }}
+            TF_LOG=DEBUG terraform plan -no-color
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

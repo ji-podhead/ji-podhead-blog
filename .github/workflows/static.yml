@@ -21,7 +21,7 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 env:
-  GH_PAT: ${{ secrets.terraform }}
+  GH_PAT: ${{ secrets.TERRAFORM }}
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -38,8 +38,8 @@ jobs:
       - uses: hashicorp/setup-terraform@633666f66e0061ca3b725c73b2ec20cd13a8fdd1 # v2.0.3
         with:
           cli_config_credentials_hostname: 'terraform.example.com'
-          cli_config_credentials_token: ${{ secrets.terraform }}
-          token: ${{ secrets.terraform }}
+          cli_config_credentials_token: ${{ secrets.TERRAFORM }}
+          token: ${{ secrets.TERRAFORM }}
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:

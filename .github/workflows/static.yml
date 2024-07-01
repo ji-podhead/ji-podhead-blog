@@ -35,26 +35,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 #      - uses: hashicorp/setup-terraform@v3
-      - uses: hashicorp/setup-terraform@633666f66e0061ca3b725c73b2ec20cd13a8fdd1 # v2.0.3
-        with:
-          cli_config_credentials_hostname: 'terraform.example.com'
-          cli_config_credentials_token: ${{ secrets.TERRAFORM }}
-      - name: Terraform Init
-        run: |
-          export TF_VAR_github_token=${{ secrets.TERRAFORM }}
-          terraform init
-      - name: Terraform Validate
-        id: validate
-        run: terraform validate -no-color
-      - name: Terraform Plan
-        run: |
-          export TF_VAR_github_token=${{ secrets.TERRAFORM }}
-          TF_LOG=DEBUG terraform plan -no-color -out=tfplan.out
-      - name: Apply Terraform Plan
-        run: |
-            terraform apply -input=false tfplan.out
-        
-        continue-on-error: true
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -74,3 +55,7 @@ jobs:
     #    run: npm ci
     #  - name: Build
     #    run: npm run build
+
+
+    
+    

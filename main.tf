@@ -6,7 +6,7 @@ variable "github_token" {
 provider "github" {
   token = var.github_token
 }
-resource "github_repository" "my_website" {
+resource "github_repository" "ji-podhead-blog" {
   name        = "ji-podhead-blog"
   description = "My static website hosted on GitHub Pages"
   homepage_url = "https://ji-podhead.github.io/ji-podhead-blog"

@@ -10,7 +10,7 @@ provider "github" {
 resource "github_repository_file" "upload_index_html" {
   repository = "ji-podhead/ji-podhead-blog" # Korrigiertes Format: Organisation/Repository
   branch     = "main"
-  file   = "index.html"
+  file   = "${path.module}/index.html"
   content    = file("${path.module}/build/index.html")
   commit_message = "Upload index.html"
 }

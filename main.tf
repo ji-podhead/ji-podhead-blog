@@ -1,10 +1,10 @@
-variable "gh_pat" {
+variable "github_token" {
   type        = string
   description = "The GitHub Personal Access Token"
   sensitive   = false
 }
 provider "github" {
-  token = var.gh_pat
+  token = var.github_token
 }
 
 resource "github_repository_file" "upload_index_html" {

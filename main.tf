@@ -6,11 +6,7 @@ variable "github_token" {
 provider "github" {
   token = var.github_token
 }
-resource "github_repository" "ji-podhead-blog" {
-  name        = "ji-podhead-blog"
-  description = "My static website hosted on GitHub Pages"
-  homepage_url = "https://ji-podhead.github.io/ji-podhead-blog"
-} 
+
 resource "github_repository_file" "upload_index_html" {
   repository = "ji-podhead/ji-podhead-blog" # Korrigiertes Format: Organisation/Repository
   branch     = "main"

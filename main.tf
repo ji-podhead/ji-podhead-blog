@@ -33,10 +33,9 @@ resource "github_repository_contents" "upload_build_directory" {
 #  }
 #}
 resource "github_repository_file" "upload_index_html" {
-  repository = "https://ji-podhead.github.io/ji-podhead-blog"
+  repository = "ji-podhead/ji-podhead-blog" # Korrigiertes Format: Organisation/Repository
   branch     = "main"
-  path       = "build/index.html"
+  filename   = "build/index.html"
   content    = file("${path.module}/build/index.html")
   commit_message = "Upload index.html"
-  force = true
 }

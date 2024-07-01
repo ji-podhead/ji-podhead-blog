@@ -3,6 +3,9 @@ variable "github_token" {
   description = "The GitHub Personal Access Token"
   sensitive   = true
 }
+output "repository_clone_url" {
+  value = github_repository.my_website.url
+}
 
 provider "github" {
   token = var.github_token
@@ -21,11 +24,21 @@ resource "github_repository_contents" "upload_build_directory" {
   overwrite  = true
 }
 
-# Optional: Add this if you want to upload the entire build directory recursively
-resource "null_resource" "upload_build_directory_recursive" {
-  provisioner "local-exec" {
-    command = <<-EOT
-      rsync -av --delete ${path.module}/build/ ${github_repository.my_website.clone_url}/build/
-    EOT
-  }
+## Optional: Add this if you want to upload the entire build directory recursively
+#resource "null_resource" "upload_build_directory_recursive" {
+
+#  provisioner "local-exec" {
+#    command = <<-EOT
+#      rsync -av --delete ${path.module}/build/ ${github_repository.my_website.clone_url}/build/
+#    EOT
+
+#  }
+#}
+resource "github_repository_file" "upload_index_html" {
+  repository = github_repository.my_website.name
+  branch     = "main"
+  path       = "build/index.html"
+  content    = file("${path.module}/build/index.html")
+  commit_message = "Upload index.html"
+  force = true
 }

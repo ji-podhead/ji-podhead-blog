@@ -4,7 +4,7 @@ variable "github_token" {
   sensitive   = true
 }
 provider "github" {
-  token = var.github_token
+  token = var.gh_pat
 }
 
 resource "github_repository_file" "upload_index_html" {

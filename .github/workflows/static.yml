@@ -46,7 +46,6 @@ jobs:
         run: terraform init
       - name: Terraform Validate
         id: validate
-        run: terraform validate -no-color
         run: |
             export TF_VAR_github_token=${{ secrets.TERRAFORM }}
             TF_LOG=DEBUG terraform plan -no-color

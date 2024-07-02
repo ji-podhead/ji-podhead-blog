@@ -46,8 +46,11 @@ classDef GH fill:#Fffff,stroke:#9999,stroke-width:2px,font-size:30px,text-align:
 		<div style="text-align:left; line-height: 0.5;">
 		<b>awaiting </b>
 		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.8;">	
-		<li>Deploy to HostProvider</li>
-		] 
+		<li>final spellchecks</li>
+		<li>final render in testproduction environment/branch</li>
+		<li>with dynamic App we would also do manual pentest and auditing</li>
+			
+] 
         Production[
 		<div style="text-align: center; ">
 		<h3>Production Stage</h3>

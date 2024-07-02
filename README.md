@@ -65,8 +65,9 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 		<h4>Production Stage</h4>
 		
 		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.5;">	
-		<li>Deploy to HostProvider</li>
-        	<li>push to production branch</li>
+		<li>deploy build-folder</li>
+		<li>remove build-folder</li>
+		<li>push workspace to production branch</li>
 		</ul>
           
 		</div>

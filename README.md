@@ -72,15 +72,17 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 		</div>
 		]
 	GH[
-		<div style="text-align: center;">
+               <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
 		<h4>Deployment</h4>
-		
-		<b>website can be hosted via:</b>
 		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.8;">	
-		<li>selfhosted via k8s,vm,etc</li>
+		<li><b>gets deployed using build folder of testing/build branch</b></li>
+		<li><b>website can be hosted via:</b></li>
+		<ul>
+<li>selfhosted via k8s,vm,etc</li>
 		<li>cloudprovider</li>
 		<li>webhoster like GH-Pages</li>
 		</ul>
+</ul>
 		</div>
   	]
 	Monitoring[
@@ -89,7 +91,7 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.5;">	
 		<li><b>Monitoring depends on deployment!</b></li>
 		<li>we choose GH-Pages hoster, so no further monitoring</li>
-		<li><b>with dynmaic App, monitor:</b></li>
+		<li><b>dynmaic-App Monitoring:</b></li>
 		<ul>
 		<li>threats</li>
 		<li>traffic</li>
@@ -107,12 +109,12 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 	M --> D
 	D --> I
 	I --> T
-	M --"branch gets deployed"--> GH
+
 	T --"finish CD cycle"--> M 
 	Integration --> Testing
 	
-	I -. "triggers Integration Stage".-> Integration
-    	Integration -. "push (integration->testing)".-> T
+	I -. "merge triggers Integration Stage".-> Integration
+    	Integration -. "push->testing".-> T
       	Testing --> Manual_Approval
    	Manual_Approval --> Production 
        	Manual_Approval -."pull request (testing->main)".-> M

@@ -6,10 +6,27 @@
 graph TB
     subgraph "Source_Control"
 
-        D(Development)
-        I(Integration)
-        T(Testing)
-        M(Main/Production)
+        D[
+               <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
+		<h3>Development</h3>
+</div>
+ ]
+        I[
+               <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
+		<h3>Integration</h3>
+</div>
+]
+        T[
+               <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
+		<h3>Testing</h3>
+</div>
+
+]
+        M[
+               <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
+		<h3>Main / Production</h3>
+</div>
+]
     end
 
 classDef JP fill:#B1BEDC,stroke:#C7A1FF,stroke-width:2px,font-size:30px,text-align:left,margin-right: 450px,font-color:#C7A1FF;
@@ -19,7 +36,7 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 		
 	Integration[
 		<div style="text-align: center;margin-left: 15px; line-height: 0.5;">
-		<h4>Integration Stage</h4>
+		<h3>Integration Stage</h3>
 		<ul style="text-align: left;list-style: square; line-height: 0.5;">
 		<li><b>Automatic Prebuild Testing</b></li>
 		<ul>	
@@ -32,7 +49,7 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 	]
 	Testing[
 				<div style="text-align: center;margin-left: 15px; line-height: 0.5;">
-				<h4>Testing Stage</h4>
+				<h3>Testing Stage</h3>
 				<ul style="text-align: left;list-style: square; line-height: 0.5;">
 				<li><b>Advanced Automatic Testing</b></li>
 				<ol style="">
@@ -47,23 +64,22 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 				</div>
 	]
 	Manual_Approval[
-				<div style="text-align: center;margin-left: 15px; line-height: 0.5;">
-		<h4>Manual Approval</h4>
-				<ul style="text-align: left;list-style: square; line-height: 0.5;">
+               <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
+		<h3>Manual Approval</h3>
+		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.5;">	
 		<ol>
 		<li>final spellchecks</li>
 		<li>final render in testproduction environment/branch</li>
 		<li>a dynamic App requires pentesting and auditing</li>
 		</ol>
-<li><b>merge pullRequest & trigger Production Stage</b></li>
+<li><b>merged pullRequest triggers Production Stage</b></li>
 </ul>
 </div>
 			
 ] 
         Production[
-				<div style="text-align: center;margin-left: 15px; line-height: 0.5;">
-		<h4>Production Stage</h4>
-		
+               <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
+		<h3>Production Stage</h3>
 		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.5;">	
 		<li>deploy build-folder</li>
 		<li>remove build-folder</li>
@@ -74,8 +90,8 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 		]
 	GH[
                <div style="text-align: center;margin-left: 15px; line-height: 0.5;">
-		<h4>Deployment</h4>
-		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.8;">	
+		<h3>Deployment</h3>
+		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.5;">	
 		<li><b>gets deployed using build folder of testing/build branch</b></li>
 		<li><b>website can be hosted via:</b></li>
 		<ul>
@@ -88,7 +104,7 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
   	]
 	Monitoring[
 				<div style="text-align: center;margin-left: 15px; line-height: 0.5;">
-		<h4>Continuous Monitoring</h4>
+		<h3>Continuous Monitoring</h3>
 		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.5;">	
 		<li><b>Monitoring depends on deployment!</b></li>
 		<li>we choose GH-Pages hoster, so no further monitoring</li>

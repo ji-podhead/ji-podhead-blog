@@ -105,13 +105,15 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 	Monitoring[
 				<div style="text-align: center;margin-left: 15px; line-height: 0.5;">
 		<h3>Continuous Monitoring</h3>
-		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.5;">	
+		<ul style="text-align: left;list-style: square; margin-left: 15px; line-height: 0.6;">	
 		<li><b>Monitoring depends on deployment!</b></li>
 		<li>we choose GH-Pages hoster, so no further monitoring</li>
 		<li><b>dynmaic-App Monitoring:</b></li>
 		<ul>
 		<li>threats</li>
 		<li>traffic</li>
+		<li>metrics, logs and traces 
+		<ul style="margin-left: 15px;line-height: 0.8;"><li> OpenTelemetry</li></ul>
 		<li>logs with kafka.</li>
 		</ul>
 		</div>
@@ -119,17 +121,11 @@ classDef GH fill:#AB95CD,stroke:#9999,stroke-width:2px,font-size:30px,text-align
 
 	end
 	
-
-
-	
-
 	M --> D
 	D --> I
 	I --> T
-
 	T --"finish CD cycle"--> M 
 	Integration --> Testing
-	
 	I -. "merge triggers Integration Stage".-> Integration
     	Integration -. "push->testing".-> T
       	Testing --> Manual_Approval
